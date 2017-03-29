@@ -26,8 +26,46 @@ $parse->safe_mode = true;
 //####################################################################################################################
 //         Обновление информации о пользователе
 //####################################################################################################################
-if( $allow_userinfo and $doaction == "adduserinfo" ) {
-	
+
+if( $allow_userinfo and $doaction == "adduserinfo" && isset($_POST['submit']) && $_POST['submit'] == 'delete') {
+    $id = $_POST['id'];
+
+    if( $_REQUEST['dle_allow_hash'] == "" or $_REQUEST['dle_allow_hash'] != $dle_login_hash ) {
+        die( "Hacking attempt! User not found" );
+    }
+
+    if( ! $id ) {
+        die( $lang['user_nouser'] );
+    }
+
+    if( $id == 1 ) {
+        die( $lang['user_undel'] );
+    }
+
+
+    $row = $db->super_query( "SELECT user_id, user_group, name, foto FROM " . USERPREFIX . "_users WHERE user_id='$id'" );
+
+    if( ! $row['user_id'] ) die( "User not found" );
+
+    if ($member_id['user_group'] != 1 AND $row['user_group'] == 1 )
+        die( $lang['user_undel'] );
+
+
+    $db->query( "DELETE FROM " . USERPREFIX . "_pm WHERE user_from = '{$row['name']}' AND folder = 'outbox'" );
+
+    @unlink( ROOT_DIR . "/uploads/fotos/" . $row['foto'] );
+
+    $db->query( "DELETE FROM " . USERPREFIX . "_users WHERE user_id='$id'" );
+    $db->query( "DELETE FROM " . USERPREFIX . "_social_login WHERE uid='$id'" );
+    $db->query( "DELETE FROM " . USERPREFIX . "_banned WHERE users_id='$id'" );
+    $db->query( "DELETE FROM " . USERPREFIX . "_pm WHERE user='$id'" );
+    $db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '65', '{$row['name']}')" );
+    clear_cache();
+
+    header("Location: " . $config['http_home_url']);
+    die();
+}
+elseif( $allow_userinfo and $doaction == "adduserinfo" ) {
 	$stop = false;
 	$id = intval($_POST['id']);
 
@@ -122,7 +160,7 @@ if( $allow_userinfo and $doaction == "adduserinfo" ) {
 
 		if( strpos ( $image_name, "php" ) !== false ) die("Hacking attempt!");
 	
-		if( is_uploaded_file( $image ) and ! $stop ) {
+		/*if( is_uploaded_file( $image ) and ! $stop ) {
 			
 			if( intval( $user_group[$member_id['user_group']]['max_foto'] ) > 0 ) {
 				
@@ -167,7 +205,7 @@ if( $allow_userinfo and $doaction == "adduserinfo" ) {
 			@unlink( ROOT_DIR . "/uploads/fotos/" . totranslit($row['foto']) );
 			$db->query( "UPDATE " . USERPREFIX . "_users set foto='' WHERE user_id = '{$id}'" );
 		
-		}
+		}*/
 		
 		if( strlen( $password1 ) > 0 ) {
 			
@@ -190,7 +228,7 @@ if( $allow_userinfo and $doaction == "adduserinfo" ) {
 			}
 		}
 		
-		if( empty( $email ) OR strlen( $email ) > 50 OR @count(explode("@", $email)) != 2) {
+		/*if( empty( $email ) OR strlen( $email ) > 50 OR @count(explode("@", $email)) != 2) {
 			
 			$stop .= $lang['news_err_21'];
 		}
@@ -217,7 +255,7 @@ if( $allow_userinfo and $doaction == "adduserinfo" ) {
 				}
 			}
 
-		}
+		}*/
 
 		if ($config['registration_type'] AND $email != $row['email'] AND !$user_group[$member_id['user_group']]['admin_editusers'] ) $send_mail_log = true; else $send_mail_log = false;
 
@@ -256,13 +294,13 @@ if( $allow_userinfo and $doaction == "adduserinfo" ) {
 			$stop .= $lang['news_err_38'];
 		}
 		
-		$db->query( "SELECT name FROM " . USERPREFIX . "_users WHERE email = '$email' AND user_id != '{$id}'" );
+		/*$db->query( "SELECT name FROM " . USERPREFIX . "_users WHERE email = '$email' AND user_id != '{$id}'" );
 		
 		if( $db->num_rows() ) {
 			$stop .= $lang['reg_err_8'];
 		}
 		
-		$db->free();
+		$db->free();*/
 
 	}
 	
@@ -308,12 +346,12 @@ if( $allow_userinfo and $doaction == "adduserinfo" ) {
 
 			$db->query( "UPDATE " . USERPREFIX . "_social_login SET password='" . md5( $password1 ) . "' WHERE uid='{$id}'" );
 			$password1 = md5( md5( $password1 ) );
-			$sql_user = "UPDATE " . USERPREFIX . "_users SET fullname='$fullname', land='$land',{$mailchange} info='$info', signature='$signature', password='$password1', allow_mail='$allow_mail', xfields='$filecontents', allowed_ip='$allowed_ip', timezone='$timezone' WHERE user_id = '{$id}'";
+			$sql_user = "UPDATE " . USERPREFIX . "_users SET password='$password1' WHERE user_id = '{$id}'";
 		
 		} else {
 			
-			$sql_user = "UPDATE " . USERPREFIX . "_users SET fullname='$fullname', land='$land',{$mailchange} info='$info', signature='$signature', allow_mail='$allow_mail', xfields='$filecontents', allowed_ip='$allowed_ip', timezone='$timezone' WHERE user_id = '{$id}'";
-		
+			//$sql_user = "UPDATE " . USERPREFIX . "_users SET fullname='$fullname', land='$land',{$mailchange} info='$info', signature='$signature', allow_mail='$allow_mail', xfields='$filecontents', allowed_ip='$allowed_ip', timezone='$timezone' WHERE user_id = '{$id}'";
+		    $sql_user = "SELECT 1";
 		}
 		
 		$db->query( $sql_user );
