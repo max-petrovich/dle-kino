@@ -1,3 +1,4 @@
+[group=6]{include file="premium.tpl"}[/group]
 <div class="user-prof">
 	<div class="up-first">
 		<h1 class="nowrap">Пользователь: {usertitle}</h1>
