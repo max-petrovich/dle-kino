@@ -1,5 +1,3 @@
-[group=6]{include file="premium.tpl"}[/group]
-
 <article class="full-page">
 
 	<div class="page-cols clearfix">

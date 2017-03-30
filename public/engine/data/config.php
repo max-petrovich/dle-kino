@@ -6,7 +6,7 @@ $config = array (
 
 'home_title' => 'DataLife Engine',
 
-'http_home_url' => 'http://dle103u.dev/',
+'http_home_url' => 'http://192.168.33.20/',
 
 'charset' => 'utf-8',
 
@@ -18,7 +18,7 @@ $config = array (
 
 'start_site' => '1',
 
-'date_adjust' => 'Europe/Moscow',
+'date_adjust' => 'Pacific/Midway',
 
 'allow_alt_url' => '1',
 
@@ -196,7 +196,7 @@ $config = array (
 
 'files_count' => '1',
 
-'admin_mail' => 'unrelaxby@gmail.com',
+'admin_mail' => 'admin@site.com',
 
 'mail_title' => '',
 

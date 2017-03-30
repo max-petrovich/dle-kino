@@ -1,3 +1,2 @@
-/.idea
-/engine/cache
-/uploads
+.DS_STORE
+.vagrant
