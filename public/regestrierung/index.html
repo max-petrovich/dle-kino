@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <title>Registrierung</title>
+    <link rel="stylesheet" media="screen" href="css/bootstrap.css" />
+    <link rel="stylesheet" media="screen" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div class="logo">
+    <img src="img/logo.png">
+</div>
+
+<div class="forms-container">
+    <div class="head-title">
+        <h1>Einen neuen Account registrieren</h1>
+        <p>Die Registrierung dauert nur 30 Sekunden!</p>
+    </div>
+    <form action="" method="post" id="form">
+        <div class="form-wrapper form-1">
+            <div class="row">
+                <div class="form-group field-first-name col-md-6 col-xs-12">
+                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Vorname">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-last-name col-md-6 col-xs-12">
+                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nachname">
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group field-first-name col-md-6 col-xs-12">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="E-Mail-Adresse">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-last-name col-md-6 col-xs-12">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-12 col-xs-12">
+                    <button id="create_account_1" class="button form-control">Registrieren</button>
+                </div>
+            </div>
+            <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
+        </div>
+
+        <div class="form-wrapper form-2">
+            <div class="row">
+                <div class="form-group field-country col-md-12 col-xs-12">
+                    <div class="custom-select-arrow"></div>
+                    <div class="white-cover"></div>
+                    <select name="country" id="country" class="form-control">
+                        <option selected value="">Land</option>
+                        <option value='0'>USA</option>
+                        <option value='1'>Deutschland</option>
+                        <option value='2'>Österreich</option>
+                        <option value="3">Schweiz</option>
+                        <option value='4'>Canada</option>
+                        <option value='5'>Frankreich</option>
+                        <option value='6'>Italien</option>
+                        <option value="7">Spanien</option>
+                    </select>
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group field-city col-md-6 col-xs-12">
+                    <input type="text" name="city" id="city" class="form-control" placeholder="Stadt">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-post_code col-md-6 col-xs-12">
+                    <input type="text" name="post_code" id="post_code" class="form-control" placeholder="Postleitzahl (PLZ)">
+                    <div class="help-block"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group field-street col-md-12 col-xs-12">
+                    <input type="text" name="street" id="street" class="form-control" placeholder="Straße Hausnummer">
+                    <div class="help-block"></div>
+                </div>
+                <div class="form-group field-phone col-md-12 col-xs-12">
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Telefonnummer">
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 col-xs-12">
+                    <button id="create_account_2" class="button form-control">Registrierung abschließen</button>
+                </div>
+            </div>
+            <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
+        </div>
+
+        <div class="form-wrapper form-3">
+
+            <div class="row">
+                <div class="form-group field-phone col-md-12 col-xs-12">
+                    <input type="text" name="sms_code" id="sms_code" class="form-control" placeholder="SMS code">
+                    <div class="help-block"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-12 col-xs-12">
+                    <button id="create_account_3" class="button form-control">Registrierung abschließen</button>
+                </div>
+            </div>
+            <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
+        </div>
+    </form>
+</div>
+
+<footer>
+    <div class="footer-text-container">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <p class="title">Werden meine persönlichen Daten weitergegeben? </p>
+                <p class="p_text">Wir garantieren Ihnen, dass Ihre persönlichen Daten nach der Registrierung nicht an Dritte weitergegeben werden. Alle Informationen werden durch den SHA256-Algorithmus unseres Servers geschützt.</p>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <p class="title">Wie lange dauert die Aktivierung des Accounts?</p>
+                <p class="p_text">Nachdem die Registrierung abgeschlossen ist, wird Ihr Account sofort aktiviert, und Sie können sich die Filme aus unserer großen Filmevideothek in der HD-Qualität uneingeschränkt anschauen.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+<script type="text/javascript">
+    var currentStep = 1;
+    $('#create_account_1').click(function (e) {
+        e.preventDefault();
+
+        var isSuccessValidated = true;
+
+        if ($('#first_name').val() == '') {
+            $('#first_name').parents('.form-group').addClass('has-error');
+            $('#first_name').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+        if ($('#last_name').val() == '') {
+            $('#last_name').parents('.form-group').addClass('has-error');
+            $('#last_name').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+        if ($('#email').val() == '') {
+            $('#email').parents('.form-group').addClass('has-error');
+            $('#email').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+        if ($('#password').val() == '') {
+            $('#password').parents('.form-group').addClass('has-error');
+            $('#password').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+
+        var email = $('#email').val();
+
+        if (!email.match( /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            $('#email').parents('.form-group').addClass('has-error');
+            $('#email').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+
+        if (isSuccessValidated) {
+            currentStep = 2;
+            $('.form-1').animate({'opacity':0}, 'slow', function () {
+                $('.form-1').css('display', 'none');
+                $('.form-2').css('display', 'block');
+                $('.form-2').animate({'opacity':1}, {duration: 200, queue:false});
+                $('.form-2').animate({'margin-top':40}, 'slow');
+            });
+        }
+    });
+
+    $('#create_account_2').click(function (e) {
+        e.preventDefault();
+
+        var isSuccessValidated = true;
+
+        if ($('#country').val() == '') {
+            $('#country').parents('.form-group').addClass('has-error');
+            $('#country').siblings('.help-block').html('Please select a value for this field');
+            isSuccessValidated = false;
+        }
+        if ($('#city').val() == '') {
+            $('#city').parents('.form-group').addClass('has-error');
+            $('#city').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+        if ($('#post_code').val() == '') {
+            $('#post_code').parents('.form-group').addClass('has-error');
+            $('#post_code').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+        if ($('#street').val() == '') {
+            $('#street').parents('.form-group').addClass('has-error');
+            $('#street').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+        if ($('#phone').val() == '') {
+            $('#phone').parents('.form-group').addClass('has-error');
+            $('#phone').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+
+        if (isSuccessValidated) {
+            currentStep = 3;
+            $('#form').submit();
+        }
+    });
+
+    $('#create_account_3').click(function (e) {
+        e.preventDefault();
+
+        var isSuccessValidated = true;
+
+        if ($('#sms_code').val() == '') {
+            $('#sms_code').parents('.form-group').addClass('has-error');
+            $('#sms_code').siblings('.help-block').html('Bitte füllen sie dieses feld aus');
+            isSuccessValidated = false;
+        }
+
+        if (isSuccessValidated) {
+            currentStep = 4;
+            $('#form').submit();
+        }
+    });
+
+    $('input').keyup(function () {
+        $(this).parents('.form-group').removeClass('has-error');
+        $(this).siblings('.help-block').html('');
+    });
+
+    $('#form').on('submit', function (e) {
+        var form = this;
+        // send ajax
+        $.ajax({
+            url: '/engine/ajax/custom_register.php',
+            type: 'POST',
+            data: $(this).serialize(),
+            dataType: 'json'
+        })
+            .done(function (r) {
+                // Show sms code form
+                if (currentStep === 3) {
+                    $('.form-2').animate({'opacity':0}, 'slow', function () {
+                        $('.form-2').css('display', 'none');
+                        $('.form-3')
+                            .css('display', 'block')
+                            .animate({'opacity':1}, {duration: 200, queue:false})
+                            .animate({'margin-top':40}, 'slow');
+                    });
+                } else if (currentStep == 4) {
+                    window.location.href = '/';
+                }
+            })
+            .fail(function (r) {
+                if (r.status === 500) {
+                    alert('Вы уже авторизированы на сайте!');
+                    return;
+                }
+                alert('Form error:\n' + r.responseJSON.errors.join('\n'));
+
+                if (currentStep !== 4) {
+                    $('.form-2').animate({'opacity':0}, 'slow', function () {
+                        $('.form-2').css('display', 'none');
+                        $('.form-1').css('display', 'block');
+                        $('.form-1').animate({'opacity':1}, {duration: 200, queue:false});
+                        $('.form-1').animate({'margin-top':40}, 'slow');
+                    });
+                }
+            })
+        ;
+        e.preventDefault();
+    });
+</script>

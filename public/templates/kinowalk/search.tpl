@@ -1,8 +1,8 @@
 <div class="search-page">
-	<header class="sub-title"><h1>Поиск по сайту</h1></header>
+	<header class="sub-title"><h1>Suche</h1></header>
 	<div class="searchtable" id="searchtable" name="searchtable">{searchtable}</div>
 </br>
-	[searchmsg]<div class="berrors"><b>Информация</b><br />{searchmsg}</div>[/searchmsg]
+	[searchmsg]<div class="berrors"><b>Info</b><br />{searchmsg}</div>[/searchmsg]
 </div>
 <!-- Оформление поиска нагло скоммуниздено у yoobe.ru. Всего ему доброго, хорошего настроения и здоровья. -->
 <style>
@@ -136,7 +136,7 @@ font-size: 12px;color: #fff;text-transform: uppercase;cursor: pointer;}
 <script>
 $(document).ready(function() {
 $("#searchinput").attr("placeholder","Поиск по сайту");
-$("#dosearch").attr("value","Найти");
+$("#dosearch").attr("value","Suchen");
 $("#fullsearch").each(function(){
 
     var a,b,d,g,e,id,clear;

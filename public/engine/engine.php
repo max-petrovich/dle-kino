@@ -60,9 +60,9 @@ switch ( $do ) {
 		include ENGINE_DIR . '/modules/addnews.php';
 		break;
 	
-	case "register" :
-		include ENGINE_DIR . '/modules/register.php';
-		break;
+//	case "register" :
+//		include ENGINE_DIR . '/modules/register.php';
+//		break;
 	
 	case "lostpassword" :
 		include ENGINE_DIR . '/modules/lostpassword.php';
@@ -593,6 +593,10 @@ switch ( $do ) {
 			//         Просмотр полной новости
 			//####################################################################################################################
 			if ($subaction == "showfull") {
+			    if ($member_id['user_group'] == 6) {
+			        header("Location");
+			        die();
+                }
 				$allow_comments = TRUE;
 			
 				include_once (ENGINE_DIR . '/modules/show.full.php');
@@ -744,7 +748,7 @@ if ($do == "cat" and $category != '' and $subaction == '') {
 } elseif ($subaction == 'newposts') $nam_e = $lang['title_new'];
 elseif ($do == 'stats') $nam_e = $lang['title_stats'];
 elseif ($do == 'addnews') $nam_e = $lang['title_addnews'];
-elseif ($do == 'register') $nam_e = $lang['title_register'];
+//elseif ($do == 'register') $nam_e = $lang['title_register'];
 elseif ($do == 'favorites') $nam_e = $lang['title_fav'];
 elseif ($do == 'pm') $nam_e = $lang['title_pm'];
 elseif ($do == 'feedback') $nam_e = $lang['title_feed'];

@@ -1,27 +1,21 @@
 <div class="form-wrap">
-	<h1>Обратная связь</h1>
+	<h1>Support kontaktieren</h1>
 	[not-logged]
 	<div class="form-item clearfix imp">
-		<label>Ваше имя:</label>
-		<input type="text" maxlength="35" name="name" placeholder="Ваше имя" />
+        <label>Ihr Name:</label>
+		<input type="text" maxlength="35" name="name" placeholder="Ihr Name" />
 	</div>
 	<div class="form-item clearfix imp">
-		<label>Ваш E-Mail:</label>
-		<input type="text" maxlength="35" name="email" placeholder="Ваш емейл" />
+		<label>Ihre E-Mail:</label>
+		<input type="text" maxlength="35" name="email" placeholder="Ihre E-Mail" />
 	</div>
 	[/not-logged]
 	<div class="form-item clearfix">
-		<label>Выберите кому:</label>
-		<div class="form-secur">
-            {recipient}
-		</div>
-	</div>
-	<div class="form-item clearfix">
-		<label>Тема сообщения:</label>
-		<input type="text" maxlength="45" name="subject" placeholder="Тема сообщения" />
+		<label>Betreff:</label>
+		<input type="text" maxlength="45" name="subject" placeholder="Betreff" />
 	</div>
 	<div class="form-textarea">
-		<label>Ваше письмо:</label>
+		<label>Ihre Nachricht:</label>
 		<textarea name="message" style="height: 160px" ></textarea>
 	</div>
 	[question]
@@ -34,9 +28,9 @@
 	[/question]
 	[sec_code]
 	<div class="form-item clearfix imp">
-		<label>Введите код с картинки:</label>
+		<label>Sicherheitscode:</label>
 		<div class="form-secur">
-            <input type="text" name="sec_code" id="sec_code" placeholder="Впишите код с картинки" maxlength="45" required />{code}
+            <input type="text" name="sec_code" id="sec_code" placeholder="Sicherheitscode" maxlength="45" required />{code}
 		</div>
 	</div>
 	[/sec_code]
@@ -50,6 +44,6 @@
 	[/recaptcha]
 	<div class="form-submit">
         <label></label>
-		<button name="send_btn" type="submit">Отправить</button>
+		<button name="send_btn" type="submit">Absenden</button>
 	</div>
 </div>

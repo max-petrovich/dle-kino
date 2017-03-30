@@ -6,7 +6,7 @@ $config = array (
 
 'home_title' => 'DataLife Engine',
 
-'http_home_url' => 'http://192.168.33.20/',
+'http_home_url' => 'http://dle103u.dev/',
 
 'charset' => 'utf-8',
 
@@ -220,17 +220,11 @@ $config = array (
 
 'reg_group' => '4',
 
-'registration_type' => '0',
+'registration_type' => '1',
 
 'reg_multi_ip' => '1',
 
 'auth_domain' => '1',
-
-'registration_rules' => '1',
-
-'allow_sec_code' => '1',
-
-'allow_skin_change' => '1',
 
 'mail_pm' => '1',
 
@@ -308,9 +302,15 @@ $config = array (
 
 'allow_gzip' => '0',
 
+'allow_sec_code' => '0',
+
+'allow_skin_change' => '0',
+
 'use_admin_mail' => '0',
 
 'mail_bcc' => '0',
+
+'registration_rules' => '0',
 
 'reg_question' => '0',
 

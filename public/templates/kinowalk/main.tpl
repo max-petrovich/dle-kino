@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="de">
 <head>
 {headers}
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -93,22 +93,22 @@
 					<div class="side-title icon-left icon-dark"><i class="fa fa-calendar-o"></i>Filme nach Erscheinungsjahr</div>
 					<div class="side-cont clearfix">
 						<ul class="menu-2col menu-4col">
-<li><a href="#">2017</a></li>							
-<li><a href="#">2016</a></li>
-							<li><a href="#">2015</a></li>
-							<li><a href="#">2014</a></li>
-							<li><a href="#">2013</a></li>
-							<li><a href="#">2012</a></li>
-							<li><a href="#">2011</a></li>
-							<li><a href="#">2010</a></li>
-							<li><a href="#">2009</a></li>
-<li><a href="#">2008</a></li>
-<li><a href="#">2007</a></li>
-<li><a href="#">2006</a></li>
-<li><a href="#">2005</a></li>
-<li><a href="#">2004</a></li>
-<li><a href="#">2003</a></li>
-<li><a href="#">2002</a></li>
+<li><a href="/xfsearch/2017">2017</a></li>							
+<li><a href="/xfsearch/2016">2016</a></li>
+							<li><a href="/xfsearch/2015">2015</a></li>
+							<li><a href="/xfsearch/2014">2014</a></li>
+							<li><a href="/xfsearch/2013">2013</a></li>
+							<li><a href="/xfsearch/2012">2012</a></li>
+							<li><a href="/xfsearch/2011">2011</a></li>
+							<li><a href="/xfsearch/2010">2010</a></li>
+							<li><a href="/xfsearch/2009">2009</a></li>
+<li><a href="/xfsearch/2008">2008</a></li>
+<li><a href="/xfsearch/2007">2007</a></li>
+<li><a href="/xfsearch/2006">2006</a></li>
+<li><a href="/xfsearch/2005">2005</a></li>
+<li><a href="/xfsearch/2004">2004</a></li>
+<li><a href="/xfsearch/2003">2003</a></li>
+<li><a href="/xfsearch/2002">2002</a></li>
 
 						</ul>
 					</div>
@@ -116,7 +116,7 @@
 				<div class="side-item">
 					<div class="side-title icon-left"><i class="fa fa-bookmark-o"></i>Top Filme</div>
 					<div class="side-conts clearfix">
-						{custom category="3" template="custom-side1" aviable="global" from="0" limit="6" cache="no"}
+						{custom category="5" template="custom-side1" aviable="global" from="0" limit="4" cache="no"}
 					</div>
 				</div>
 				<div class="side-item">
@@ -143,11 +143,10 @@
 				<div class="copyr">
                     © 2015-2017 FelixKino - All rights reserved<br/>
 				</div>
-                <a href="/index.php?do=feedback">Contact</a>
-                <a href="/">link</a>
-                <a href="/">link</a>
-                <a href="/">link</a>
-                <a href="/">link</a>
+                <a href="/dmca.html">DMCA</a>
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Use</a>
+                <a href="/index.php?do=feedback">Support</a>
          </footer>
 	 </div>
 

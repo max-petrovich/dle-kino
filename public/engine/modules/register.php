@@ -439,6 +439,8 @@ return true;
 HTML;
 		$tpl->compile( 'content' );
 		$tpl->clear();
+
+
 	
 	}
 

@@ -149,7 +149,7 @@ $(document).ready(function(){
 		$("#addcform").fadeIn(200);
 	});
 	
-    $('body').append('<div id="gotop" title="Наверх"></div>');
+    $('body').append('<div id="gotop" title=«Up»></div>');
     var $gotop=$('#gotop'); 
 	$ (window).scroll (function () {
 		if ($ (this).scrollTop () > 300) {

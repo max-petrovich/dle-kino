@@ -1,0 +1,7 @@
+last_name|Фамилия|1|text|0|1|
+country|Страна|1|select|0|1|USA__NEWL__Deutschland__NEWL__Österreich__NEWL__Schweiz__NEWL__Canada__NEWL__Frankreich__NEWL__Italien__NEWL__Spanien
+first_name|Имя|1|text|0|1|
+city|Город|1|text|0|1|
+post_code|Индекс|1|text|0|1|
+street|Улица|1|text|0|1|
+phone|Телефон|1|text|0|1|

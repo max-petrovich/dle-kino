@@ -1,0 +1,17 @@
+{
+    "name": "root/public",
+    "require": {
+        "symfony/validator": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maxic\\": "Maxic/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maxic",
+            "email": "petrovich.m.y@gmail.com"
+        }
+    ]
+}
