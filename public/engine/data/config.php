@@ -6,7 +6,7 @@ $config = array (
 
 'home_title' => 'DataLife Engine',
 
-'http_home_url' => 'http://dle103u.dev/',
+'http_home_url' => 'http://192.168.33.20/',
 
 'charset' => 'utf-8',
 

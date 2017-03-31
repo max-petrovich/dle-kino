@@ -6,7 +6,7 @@ define ("DBNAME", "scotchbox");
 
 define ("DBUSER", "root");
 
-define ("DBPASS", "");  
+define ("DBPASS", "root");
 
 define ("PREFIX", "dle"); 
 

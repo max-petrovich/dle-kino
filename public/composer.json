@@ -1,7 +1,9 @@
 {
     "name": "root/public",
     "require": {
-        "symfony/validator": "^3.2"
+        "symfony/validator": "^3.2",
+        "symfony/dom-crawler": "^3.2",
+        "symfony/css-selector": "^3.2"
     },
     "autoload": {
         "psr-4": {

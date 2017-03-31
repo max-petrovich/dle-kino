@@ -1,0 +1,5 @@
+year|year||text||0|1|0|1
+regie|regie||text||0|0|0|1
+akter|akter, актеры через запятую||text||0|0|0|1
+openload|openload||text||0|0|0|1
+hd-streams|hd-streams (донер url)||text||0|0|0|1
