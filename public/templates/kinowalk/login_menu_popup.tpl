@@ -1,5 +1,5 @@
 <div class="login-box" id="login-box">
-    <div class="login-title">{login}</div>
+    <div class="login-title">[xfgiven_first_name][xfvalue_first_name][/xfgiven_first_name] [xfgiven_last_name][xfvalue_last_name][/xfgiven_last_name]</div>
     <div class="login-avatar">
         [group=1]<a href="{admin-link}" target="_blank">Админпанель</a>[/group]
     </div>
