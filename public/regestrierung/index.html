@@ -17,106 +17,126 @@
 </div>
 
 <div class="forms-container">
-    <div class="head-title">
-        <h1>Einen neuen Account registrieren</h1>
-        <p>Die Registrierung dauert nur 30 Sekunden!</p>
-    </div>
     <form action="" method="post" id="form">
-        <div class="form-wrapper form-1">
-            <div class="row">
-                <div class="form-group field-first-name col-md-6 col-xs-12">
-                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Vorname">
-                    <div class="help-block"></div>
-                </div>
-                <div class="form-group field-last-name col-md-6 col-xs-12">
-                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nachname">
-                    <div class="help-block"></div>
-                </div>
+        <div class="form-1">
+            <div class="head-title">
+                <h1>1 Einen neuen Account registrieren</h1>
+                <p>1 Die Registrierung dauert nur 30 Sekunden!</p>
             </div>
+            <div class="form-wrapper">
+                <div class="row">
+                    <div class="form-group field-first-name col-md-6 col-xs-12">
+                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Vorname" required>
+                        <div class="help-block"></div>
+                    </div>
+                    <div class="form-group field-last-name col-md-6 col-xs-12">
+                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Nachname" required>
+                        <div class="help-block"></div>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="form-group field-first-name col-md-6 col-xs-12">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="E-Mail-Adresse">
-                    <div class="help-block"></div>
+                <div class="row">
+                    <div class="form-group field-first-name col-md-6 col-xs-12">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="E-Mail-Adresse" required>
+                        <div class="help-block"></div>
+                    </div>
+                    <div class="form-group field-last-name col-md-6 col-xs-12">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                        <div class="help-block"></div>
+                    </div>
                 </div>
-                <div class="form-group field-last-name col-md-6 col-xs-12">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-                    <div class="help-block"></div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-md-12 col-xs-12">
-                    <button id="create_account_1" class="button form-control">Registrieren</button>
+                <div class="row">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <button id="create_account_1" class="button form-control">Registrieren 1</button>
+                    </div>
                 </div>
+                <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
             </div>
-            <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
         </div>
 
-        <div class="form-wrapper form-2">
-            <div class="row">
-                <div class="form-group field-country col-md-12 col-xs-12">
-                    <div class="custom-select-arrow"></div>
-                    <div class="white-cover"></div>
-                    <select name="country" id="country" class="form-control">
-                        <option selected value="">Land</option>
-                        <option value='0'>USA</option>
-                        <option value='1'>Deutschland</option>
-                        <option value='2'>Österreich</option>
-                        <option value="3">Schweiz</option>
-                        <option value='4'>Canada</option>
-                        <option value='5'>Frankreich</option>
-                        <option value='6'>Italien</option>
-                        <option value="7">Spanien</option>
-                    </select>
-                    <div class="help-block"></div>
-                </div>
+        <div class="form-2">
+            <div class="head-title">
+                <h1>2 Einen neuen Account registrieren</h1>
+                <p>2 Die Registrierung dauert nur 30 Sekunden!</p>
             </div>
+            <div class="form-wrapper">
+                <div class="row">
+                    <div class="form-group field-country col-md-12 col-xs-12">
+                        <div class="custom-select-arrow"></div>
+                        <div class="white-cover"></div>
+                        <select name="country" id="country" class="form-control">
+                            <option selected value="">Land</option>
+                            <option value='0' data-prefix="1">USA</option>
+                            <option value='1' data-prefix="49">Deutschland</option>
+                            <option value='2' data-prefix="43">Österreich</option>
+                            <option value="3" data-prefix="41">Schweiz</option>
+                            <option value='4' data-prefix="1">Canada</option>
+                            <option value='5' data-prefix="33">Frankreich</option>
+                            <option value='6' data-prefix="39">Italien</option>
+                            <option value="7" data-prefix="34">Spanien</option>
+                        </select>
+                        <div class="help-block"></div>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="form-group field-city col-md-6 col-xs-12">
-                    <input type="text" name="city" id="city" class="form-control" placeholder="Stadt">
-                    <div class="help-block"></div>
+                <div class="row">
+                    <div class="form-group field-city col-md-6 col-xs-12">
+                        <input type="text" name="city" id="city" class="form-control" placeholder="Stadt" required>
+                        <div class="help-block"></div>
+                    </div>
+                    <div class="form-group field-post_code col-md-6 col-xs-12">
+                        <input type="number" name="post_code" id="post_code" class="form-control" placeholder="Postleitzahl (PLZ)" required pattern="[0-9]+">
+                        <div class="help-block"></div>
+                    </div>
                 </div>
-                <div class="form-group field-post_code col-md-6 col-xs-12">
-                    <input type="text" name="post_code" id="post_code" class="form-control" placeholder="Postleitzahl (PLZ)">
-                    <div class="help-block"></div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group field-street col-md-12 col-xs-12">
-                    <input type="text" name="street" id="street" class="form-control" placeholder="Straße Hausnummer">
-                    <div class="help-block"></div>
+                <div class="row">
+                    <div class="form-group field-street col-md-12 col-xs-12">
+                        <input type="text" name="street" id="street" class="form-control" placeholder="Straße Hausnummer" required>
+                        <div class="help-block"></div>
+                    </div>
+                    <div class="form-group field-phone col-md-12 col-xs-12">
+                        <input type="text" name="phone" id="phone" class="form-control" placeholder="Telefonnummer" required>
+                        <div class="help-block"></div>
+                    </div>
+                    <div class="form-group col-md-12 col-xs-12">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, eius necessitatibus? Aliquid beatae commodi consequatur error est eum eveniet harum in incidunt inventore laborum molestias obcaecati quas rerum tempore, tenetur.
+                    </div>
                 </div>
-                <div class="form-group field-phone col-md-12 col-xs-12">
-                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Telefonnummer">
-                    <div class="help-block"></div>
+                <div class="row">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <button id="create_account_2" class="button form-control">Registrierung 2</button>
+                    </div>
                 </div>
+                <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
             </div>
-            <div class="row">
-                <div class="form-group col-md-12 col-xs-12">
-                    <button id="create_account_2" class="button form-control">Registrierung abschließen</button>
-                </div>
-            </div>
-            <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
         </div>
 
-        <div class="form-wrapper form-3">
-
-            <div class="row">
-                <div class="form-group field-phone col-md-12 col-xs-12">
-                    <input type="text" name="sms_code" id="sms_code" class="form-control" placeholder="SMS code">
-                    <div class="help-block"></div>
-                </div>
+        <div class="form-3">
+            <div class="head-title">
+                <h1>3 Einen neuen Account registrieren</h1>
+                <p>3 Die Registrierung dauert nur 30 Sekunden!</p>
             </div>
-            <div class="row">
-                <div class="form-group col-md-12 col-xs-12">
-                    <button id="create_account_3" class="button form-control">Registrierung abschließen</button>
+            <div class="form-wrapper">
+                <div class="row">
+                    <div class="form-group col-md-12 col-xs-12">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, eius necessitatibus? Aliquid beatae commodi consequatur error est eum eveniet harum in incidunt inventore laborum molestias obcaecati quas rerum tempore, tenetur.
+                    </div>
+                    <div class="form-group field-phone col-md-12 col-xs-12">
+                        <input type="text" name="sms_code" id="sms_code" class="form-control" placeholder="SMS code" required>
+                        <div class="help-block"></div>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <button id="create_account_3" class="button form-control">Registrierung 3</button>
+                    </div>
+                </div>
+                <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
             </div>
-            <p class="term-service">Indem Sie diese Form registrieren, bestätigen Sie, dass Sie bereits 18 Jahre alt sind.</p>
         </div>
+
     </form>
 </div>
 
@@ -241,6 +261,17 @@
         $(this).parents('.form-group').removeClass('has-error');
         $(this).siblings('.help-block').html('');
     });
+
+    $(document).ready(function () {
+        $('#country').on('change', function () {
+            if (this.value != '') {
+                $('#phone').val('+' + $(':selected', this).data('prefix'));
+            } else {
+                $('#phone').val('');
+            }
+        });
+    });
+
 
     $('#form').on('submit', function (e) {
         var form = this;

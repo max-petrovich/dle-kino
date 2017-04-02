@@ -7,8 +7,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Maxic\\": "Maxic/"
-        }
+            "Maxic\\": "src/Maxic/"
+        },
+        "classmap": [   "src/KyranRana/cloudflare-bypass/libraries/httpProxyClass.php",
+                        "src/KyranRana/cloudflare-bypass/libraries/cloudflareClass.php" ]
     },
     "authors": [
         {

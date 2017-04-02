@@ -17,7 +17,7 @@ abstract class AbstractParser implements IParser
      * @return string
      * @throws \Exception
      */
-    static protected function getUrl($url)
+    static protected function getUrl($url, $options = [])
     {
         $ch = curl_init();
 
@@ -27,6 +27,13 @@ abstract class AbstractParser implements IParser
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+//        curl_setopt($ch, CURLOPT_COOKIEJAR, realpath('cookie.txt'));
+//        curl_setopt($ch, CURLOPT_COOKIEFILE, realpath('cookie.txt'));
+
+        foreach ($options as $key => $value) {
+            curl_setopt($ch, $key, $value);
+        }
 
         $response = curl_exec($ch);
 

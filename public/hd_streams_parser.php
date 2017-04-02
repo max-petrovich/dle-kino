@@ -1,10 +1,23 @@
 <?php
 
-use Maxic\Service\HDStreamsParserService;
+use Maxic\Parser\HDStreamsParser;
+use Maxic\Parser\TMDbParser;
 
 session_start();
 ob_end_flush();
 ob_start();
+
+if( !defined( 'E_DEPRECATED' ) ) {
+
+    @error_reporting ( E_ALL ^ E_WARNING ^ E_NOTICE );
+    @ini_set ( 'error_reporting', E_ALL ^ E_WARNING ^ E_NOTICE );
+
+} else {
+
+    @error_reporting ( E_ALL ^ E_WARNING ^ E_DEPRECATED ^ E_NOTICE );
+    @ini_set ( 'error_reporting', E_ALL ^ E_WARNING ^ E_DEPRECATED ^ E_NOTICE );
+
+}
 
 @ini_set ( 'display_errors', true );
 @ini_set ( 'html_errors', false );
@@ -23,6 +36,8 @@ include ENGINE_DIR . '/data/config.php';
 require_once ENGINE_DIR . '/classes/mysql.php';
 require_once ENGINE_DIR . '/data/dbconfig.php';
 require_once ENGINE_DIR . '/modules/functions.php';
+require_once ENGINE_DIR . '/classes/uploads/upload.class.php';
+
 
 //################# Определение групп пользователей
 $user_group = get_vars( "usergroup" );
@@ -97,9 +112,79 @@ if (isset($_POST['links'])) {
                     throw new \Exception("Already exists in database");
                 }
 
-                $parsed = HDStreamsParserService::parse($link);
+                $hdStreamsParsed = HDStreamsParser::parse($link);
 
-                break;
+                if (is_array($hdStreamsParsed) && !empty($hdStreamsParsed)) {
+                    // Get directors
+                    $TMDbContent = TMDbParser::parse($hdStreamsParsed['tmdb']);
+                    if (!is_array($TMDbContent) || count($TMDbContent) === 0) {
+                        throw new \Exception("Not found directors on TMDb");
+                    }
+                    // # Publish news
+                    // Get temp url to poster
+                    $fileName = date('Y-m') . '/' . time() . '_' . basename($hdStreamsParsed['poster']);
+                    $filePath = ROOT_DIR . '/uploads/posts/' .  $fileName;
+                    $fp = fopen($filePath, 'x');
+                    fwrite($fp, $hdStreamsParsed['poster_raw']);
+                    fclose($fp);
+                    $posterURL = $config['http_home_url'] . 'uploads/posts/' . $fileName;
+
+                    // ==================================================
+                    $added_time = time();
+                    $thistime = date( "Y-m-d H:i:s", $added_time );
+
+                    $db->query("INSERT INTO ".PREFIX."_images (images, news_id, author, date) 
+                                VALUES ('{$fileName}', 0, '".$db->safesql($member_id['name'])."', '".time()."')");
+
+                    // Get id categories by parsed data
+                    $categoriesNamesForQuery = implode(',', array_map(function($v) use($db) {
+                        return "'". $db->safesql($v)."'";
+                    } ,$hdStreamsParsed['genres']));
+
+                    $rowCategories = $db->super_query("SELECT GROUP_CONCAT(id SEPARATOR ',') as category FROM ".PREFIX."_category 
+                                                        WHERE name in (". $categoriesNamesForQuery .")");
+
+
+                    $_POST['xfield'] = [
+                        'year' => $TMDbContent['year'],
+                        'regie' => $TMDbContent['directors'][0],
+                        'akter' => implode(',', array_slice($hdStreamsParsed['acters'], 0, 5)),
+                        'openload' => $hdStreamsParsed['openload'],
+                        'hd-streams' => $link
+                    ];
+
+                    $xfieldsaction = "init";
+                    $category = ['0'];
+                    include (ENGINE_DIR . '/inc/xfields.php');
+
+                    $category = $rowCategories['category'];
+
+                    $short_story = $db->safesql('<!--dle_image_begin:'.$posterURL.'|left--><img src="'.$posterURL.'" style="float:left;"  /><!--dle_image_end-->');
+                    $full_story = $db->safesql($hdStreamsParsed['description']);
+
+                    // Insert post, post_extras
+                    $db->query("INSERT INTO ".PREFIX."_post (autor, `date`, short_story, full_story, xfields, title, descr, category, alt_name, approve, symbol, tags, metatitle)
+                                VALUES ('{$member_id['name']}',
+                                '$thistime',
+                                '".$short_story."',
+                                '".$full_story."',
+                                '$filecontents',
+                                '".$db->safesql($hdStreamsParsed['title'])."',
+                                '',
+                                '{$category}',
+                                '".$db->safesql(totranslit($hdStreamsParsed['title'], true, false))."',
+                                '{$approve}',
+                                '', '', '')");
+                    $rowId = $db->insert_id();
+                    $db->query("INSERT INTO ".PREFIX."_post_extras (news_id, related_ids, access, editor, reason, user_id)
+                                VALUES ('{$rowId}', '', '', '', '', '{$member_id['user_id']}')");
+                    // Update image news_id images
+                    $db->query("UPDATE ".PREFIX."_images SET news_id = '{$rowId}' WHERE author = '".$db->safesql($member_id['name'])."' and news_id = 0  ");
+
+                    echo '-> <span style="color: green;">Опубликовано</span><br>';
+                } else {
+                    throw new \Exception('Could not parse data');
+                }
             } catch (\BadMethodCallException $e) {
                 echo "-> <b>" . $e->getMessage() . "<br> Script stop working!</b>";
                 die();

@@ -23,7 +23,7 @@ class thumbnail {
 	var $watermark_image_light;
 	var $watermark_image_dark;
 	
-	function thumbnail($imgfile) {
+	function __construct($imgfile) {
 		//detect image format
 
 		$info = @getimagesize($imgfile); 
