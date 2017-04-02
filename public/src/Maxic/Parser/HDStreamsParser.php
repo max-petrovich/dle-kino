@@ -22,7 +22,8 @@ class HDStreamsParser extends AbstractParser
 
         $html = self::getPage($url);
 
-        $crawler = new Crawler($html);
+        $crawler = new Crawler();
+        $crawler->addHtmlContent(utf8_decode($html));
 
         $data = [];
         $data['poster'] = $crawler->filter('#main-content .row.post .poster > img')->first()->attr('src');
@@ -43,6 +44,9 @@ class HDStreamsParser extends AbstractParser
     /**
      * Modified function getUrl to pass cloudflare ddos protection
      * @param $url
+     * @param string $type
+     * @param array $post
+     * @param array $headers
      * @return string
      */
     protected  static function getPage($url, $type = 'GET', $post = [], $headers = [])
@@ -126,7 +130,8 @@ class HDStreamsParser extends AbstractParser
     }
 
     protected static function getOpenloadUrl($html){
-        $crawler = new Crawler($html);
+        $crawler = new Crawler();
+        $crawler->addHtmlContent($html);
 
         $episodeData = $crawler->filter('.movie > a')->first()->extract(['data-episode', 'data-server']);
         $openloadRequest = [

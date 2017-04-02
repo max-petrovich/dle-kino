@@ -89,6 +89,34 @@ if (!$is_logged || $member_id['user_group'] != 1) {
     die("Unauthorized access");
 }
 
+
+echo <<<HTML
+<!doctype html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>HD Stream Parser</title>
+</head>
+<body>
+    <h2>HD Streams Parser</h2>
+    {$errors}
+    <form action="" method="post" onsubmit="if (document.getElementById('links').value.length === 0) {alert('Введите ссылки'); return false;}">
+        <div>
+            <textarea name="links" rows="10" cols="100" id="links"></textarea>
+        </div>
+        <div>
+        <label for="approve">Одобрить новости на сайте:
+            <input type="checkbox" name="approve" id="approve" value="1" checked />
+        </label>
+        </div>
+        <div style="padding: 20px 0;">
+            <button type="submit" style="padding: 10px;">Начать парсинг</button>
+        </div>
+    </form>
+</body>
+</html>
+HTML;
+
 $errors = null;
 
 if (isset($_POST['links'])) {
@@ -122,6 +150,12 @@ if (isset($_POST['links'])) {
                     }
                     // # Publish news
                     // Get temp url to poster
+                    $filePathDir = ROOT_DIR . '/uploads/posts/' . date('Y-m');
+
+                    if (!is_dir($filePathDir)) {
+                        @mkdir( $filePathDir, 0777, true );
+                        @chmod( $filePathDir, 0777, true );
+                    }
                     $fileName = date('Y-m') . '/' . time() . '_' . basename($hdStreamsParsed['poster']);
                     $filePath = ROOT_DIR . '/uploads/posts/' .  $fileName;
                     $fp = fopen($filePath, 'x');
@@ -148,7 +182,7 @@ if (isset($_POST['links'])) {
                     $_POST['xfield'] = [
                         'year' => $TMDbContent['year'],
                         'regie' => $TMDbContent['directors'][0],
-                        'akter' => implode(',', array_slice($hdStreamsParsed['acters'], 0, 5)),
+                        'akter' => implode(', ', array_slice($hdStreamsParsed['acters'], 0, 5)),
                         'openload' => $hdStreamsParsed['openload'],
                         'hd-streams' => $link
                     ];
@@ -195,39 +229,9 @@ if (isset($_POST['links'])) {
             ob_flush();
             flush();
         }
-    }
 
-    if (null === $errors) {
-        return;
+        if ($approve) {
+            clear_cache( array('news_', 'related_', 'tagscloud_', 'archives_', 'calendar_', 'topnews_', 'rss') );
+        }
     }
 }
-
-echo <<<HTML
-<!doctype html>
-<html >
-<head>
-<meta charset="UTF-8">
-<title>HD Stream Parser</title>
-</head>
-<body>
-    <h2>HD Streams Parser</h2>
-    {$errors}
-    <form action="" method="post" onsubmit="if (document.getElementById('links').value.length === 0) {alert('Введите ссылки'); return false;}">
-        <div>
-            <textarea name="links" rows="10" cols="100" id="links">
-https://hd-streams.org/transformers-3-2011/
-https://hd-streams.org/rogue-one-a-star-wars-story-2016/
-</textarea>
-        </div>
-        <div>
-        <label for="approve">Одобрить новости на сайте:
-            <input type="checkbox" name="approve" id="approve" value="1" />
-        </label>
-        </div>
-        <div style="padding: 20px 0;">
-            <button type="submit" style="padding: 10px;">Начать парсинг</button>
-        </div>
-    </form>
-</body>
-</html>
-HTML;
