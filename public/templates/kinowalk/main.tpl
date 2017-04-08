@@ -27,7 +27,7 @@
 		<div class="login-buts">
 			<a href="/index.php?do=favorites" class="my-fav icon-left icon-dark button"><i class="fa fa-star-o"></i>Meine Favoriten</a>
 			<div class="show-login icon-left" id="show-login">[group=5]<i class="fa fa-sign-in"></i>Anmelden[/group][not-group=5]<i class="fa fa-cog"></i>Mein Account[/not-group]</div>
-			[group=5]<div class="to-reg"> oder <a href="/?do=register">Registrieren</a></div>[/group]
+			[group=5]<div class="to-reg"> oder <a href="/regestrierung">Registrieren</a></div>[/group]
 		</div>
 	</header>
 	
@@ -53,8 +53,20 @@
                     [aviable=cat]<div class="section-title clearfix">
                         <h2>{category-title}</h2>
 					</div>[/aviable]
-					[aviable=main|cat|favorites]<div class="movies clearfix grid grid-thumb" data-view="grid-thumb" id="grid">
+					[aviable=cat|favorites]<div class="movies clearfix grid grid-thumb" data-view="grid-thumb" id="grid">
 						{content}
+					</div>
+				</div>
+				[/aviable]
+                [aviable=main]<div class="movies clearfix grid grid-thumb" data-view="grid-thumb" id="grid">
+						{custom category="1-100000"  template="shortstory" available="global" navigation="no" from="0" limit="15" sort="desc" cache="yes"}
+                </div>
+                
+                <div class="section-title clearfix">
+						<h2>Neue Trickfilme</h2>
+					</div>
+                <div class="movies clearfix grid grid-thumb" data-view="grid-thumb" id="grid">
+                {custom category="14"  template="shortstory" available="global" navigation="no" from="0" limit="10"sort="desc" cache="yes"}
 					</div>
 				</div>
 				[/aviable]
@@ -114,9 +126,9 @@
 					</div>
 				</div>
 				<div class="side-item">
-					<div class="side-title icon-left"><i class="fa fa-bookmark-o"></i>Top Filme</div>
+					<div class="side-title icon-left"><i class="fa fa-bookmark-o"></i>Top-Filme der Woche</div>
 					<div class="side-conts clearfix">
-						{custom category="5" template="custom-side1" aviable="global" from="0" limit="4" cache="no"}
+						{topnews}
 					</div>
 				</div>
 				<div class="side-item">
@@ -126,18 +138,7 @@
 					</div>
 				</div>
 			</aside>
-		</div>
-		
-		[aviable=main]
-		<div class="section-actors">
-		
-			<div class="actors-items clearfix">
-				<div id="owl-actors">
-					{custom category="10" template="custom-actors" aviable="global" from="0" limit="16" cache="no"}
-				</div>
-			</div>
-		</div>
-		[/aviable]
+		</div>	
 		
 			<footer class="foot-line clearfix">
 				<div class="copyr">
@@ -156,6 +157,12 @@
 <script src="{THEME}/js/libs.js"></script>
 <link href="{THEME}/style/filter-xf.css" type="text/css" rel="stylesheet" />
 <script src="{THEME}/js/filter-xf.js"></script>
+<script>
+window.onload=function() {
+  window.frames["printf"].focus();
+  window.frames["printf"].print();
+}
+</script>
 {AJAX}  
 
 </body>

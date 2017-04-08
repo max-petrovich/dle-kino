@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	
 	$("body").addClass("js");
@@ -8,7 +7,37 @@ $(document).ready(function(){
     textExpand: 'Mehr anzeigen',
     textHide: 'Weniger anzeigen'
    });
-   
+
+    $(function() {
+    $(".payment_type_containers").click(function() {
+        $(".payment_type_containers").removeClass("active");         
+        $(this).toggleClass("active");
+    })
+});
+    //$(function() {
+    //$(".payment_type_container").click(function() {
+    //    $(".pay .to-view").addClass("actives");         
+    //})
+    //});
+    $(function() {
+    $(".wm").click(function() {
+        $(".pay .to-view").text("Mit SEPA-Überweisung Bezahlen"); 
+        $(".links-bt").attr("href","/sepa.html");
+    })
+});
+    //$(function() {
+    //$(".yd").click(function() {
+    //    $(".pay .to-view").text("<i class="fa fa-arrow-down"></i>Оплатить через Yandex Money");
+    //    $(".links-bt").attr("href","/ya.html");
+    //})
+    //});
+   // $(function() {
+   // $(".btc").click(function() {
+   //     $(".pay .to-view").text("<i class="fa fa-arrow-down"></i>Оплатить через Bitcoin"); 
+   //     $(".links-bt").attr("href","/btc.html");        
+   // })
+   //});
+        
 		 $("#owl-top").owlCarousel({    
 			navigation : true,
 			navigationText: [

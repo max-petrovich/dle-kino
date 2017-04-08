@@ -54,7 +54,7 @@
 			
 	<div class="player-section">
 				<ul class="tabs nowrap">
-					<li class="current">FULL HD STREAM (1080p)</li>
+					<li class="current">{title} - HD STREAM</li>
 				</ul>
 				
 		<div class="player-drop visible full-text">

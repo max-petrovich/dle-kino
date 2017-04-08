@@ -124,6 +124,13 @@ if( isset( $_POST['login'] ) AND $_POST['login_name'] AND $_POST['login_password
 
 			$is_logged = TRUE;
 
+			// to last url if exists
+            if (isset($_SESSION['last_url'])) {
+                header("Location:" . $_SESSION['last_url']);
+                unset($_SESSION['last_url']);
+                die();
+            }
+
 		} else {
 
 			$is_logged = false;

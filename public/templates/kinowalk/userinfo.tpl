@@ -17,7 +17,7 @@
 		</div>
 		<div class="form-submit">
 			<button name="submit" type="submit" id="submit" value="submit">Speichern</button>
-			[not-group=6]<button name="submit" type="submit" value="delete" style="background:red; float:right;" onclick="if (!confirm('Account löschen?')) return false;">Account lösche</button>[/not-group]
+			[not-group=6]<button name="submit" type="submit" value="delete" style="background:red; float:right;" onclick="if (!confirm('Account löschen?')) return false;">Account löschen</button>[/not-group]
 		</div>
 	</div>
 </div>

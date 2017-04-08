@@ -2,7 +2,6 @@
 
 namespace Maxic\Parser;
 
-
 abstract class AbstractParser implements IParser
 {
 

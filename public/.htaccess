@@ -63,8 +63,8 @@ RewriteRule ^addnews.html$ index.php?do=addnews [L]
 RewriteRule ^rss.xml$ engine/rss.php [L]
 RewriteRule ^sitemap.xml$ uploads/sitemap.xml [L]
 
-RewriteRule ^regestrierung/index\.html$ /regestrierung/ [NC,R]
-RewriteRule ^regestrierung/?$ regestrierung/index.php [L]
+RewriteRule ^registrierung/index\.html$ /registrierung/ [NC,R]
+RewriteRule ^registrierung/?$ registrierung/index.php [L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^.]+)/page/([0-9]+)(/?)+$ index.php?do=cat&category=$1&cstart=$2 [L]

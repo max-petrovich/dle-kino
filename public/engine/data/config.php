@@ -4,25 +4,27 @@
 
 $config = array (
 
-'home_title' => 'DataLife Engine',
+'home_title' => 'FelixKino - Kinofilme in HD qualität',
 
-'http_home_url' => 'http://192.168.33.20/',
+'http_home_url' => 'http://dle103u.dev/',
 
 'charset' => 'utf-8',
 
-'description' => 'Демонстрационная страница движка DataLife Engine',
+'description' => 'FelixKino - Kinofilme in HD qualität',
 
-'keywords' => 'DataLife, Engine, CMS, PHP движок',
+'keywords' => '',
 
-'short_title' => 'Демонстрационный сайт',
+'short_title' => 'FelixKino',
 
 'start_site' => '1',
 
-'date_adjust' => 'Pacific/Midway',
+'date_adjust' => 'Europe/Berlin',
 
 'allow_alt_url' => '1',
 
 'seo_type' => '2',
+
+'seo_control' => '1',
 
 'langs' => 'Russian',
 
@@ -40,9 +42,9 @@ $config = array (
 
 'admin_allowed_ip' => '',
 
-'login_log' => '5',
+'login_log' => '50',
 
-'ip_control' => '1',
+'ip_control' => '0',
 
 'sec_addnews' => '2',
 
@@ -62,9 +64,9 @@ $config = array (
 
 'search_number' => '10',
 
-'related_number' => '5',
+'related_number' => '7',
 
-'top_number' => '10',
+'top_number' => '4',
 
 'tags_number' => '40',
 
@@ -109,8 +111,6 @@ $config = array (
 'allow_site_wysiwyg' => '0',
 
 'allow_quick_wysiwyg' => '0',
-
-'allow_comments' => '1',
 
 'comments_restricted' => '0',
 
@@ -176,14 +176,6 @@ $config = array (
 
 'allow_archives' => '1',
 
-'rss_informer' => '1',
-
-'allow_tags' => '1',
-
-'allow_change_sort' => '1',
-
-'online_status' => '1',
-
 'allow_links' => '1',
 
 'files_allow' => '1',
@@ -196,7 +188,7 @@ $config = array (
 
 'files_count' => '1',
 
-'admin_mail' => 'admin@site.com',
+'admin_mail' => 'admin@pp.cc',
 
 'mail_title' => '',
 
@@ -214,33 +206,33 @@ $config = array (
 
 'smtp_mail' => '',
 
+'use_admin_mail' => '1',
+
 'smtp_helo' => 'HELO',
 
-'auth_metod' => '0',
+'auth_metod' => '1',
 
 'reg_group' => '4',
 
-'registration_type' => '1',
+'registration_type' => '0',
 
 'reg_multi_ip' => '1',
 
 'auth_domain' => '1',
 
-'mail_pm' => '1',
+'allow_sec_code' => '1',
 
 'max_users' => '0',
 
 'max_users_day' => '0',
 
-'max_up_side' => '0',
+'max_up_side' => '252x379',
 
 'o_seite' => '0',
 
-'max_up_size' => '200',
+'max_up_size' => '2000',
 
 'max_image_days' => '2',
-
-'allow_watermark' => '1',
 
 'max_watermark' => '150',
 
@@ -250,7 +242,7 @@ $config = array (
 
 't_seite' => '0',
 
-'jpeg_quality' => '85',
+'jpeg_quality' => '850',
 
 'avatar_size' => '100',
 
@@ -264,15 +256,11 @@ $config = array (
 
 'mobile_news' => '10',
 
-'allow_rss' => '1',
-
 'rss_mtype' => '0',
 
 'rss_number' => '10',
 
 'rss_format' => '1',
-
-'seo_control' => '0',
 
 'allow_complaint_mail' => '0',
 
@@ -290,29 +278,39 @@ $config = array (
 
 'hide_full_link' => '0',
 
+'allow_comments' => '0',
+
 'js_min' => '0',
 
 'allow_cmod' => '0',
 
 'cache_count' => '0',
 
+'rss_informer' => '0',
+
+'allow_tags' => '0',
+
+'allow_change_sort' => '0',
+
 'comments_ajax' => '0',
+
+'online_status' => '0',
 
 'allow_cache' => '0',
 
 'allow_gzip' => '0',
 
-'allow_sec_code' => '0',
-
 'allow_skin_change' => '0',
 
-'use_admin_mail' => '0',
+'allow_watermark' => '0',
 
 'mail_bcc' => '0',
 
 'registration_rules' => '0',
 
 'reg_question' => '0',
+
+'mail_pm' => '0',
 
 'thumb_dimming' => '0',
 
@@ -321,6 +319,8 @@ $config = array (
 'allow_smart_images' => '0',
 
 'allow_smart_video' => '0',
+
+'allow_rss' => '0',
 
 'comments_lazyload' => '0',
 

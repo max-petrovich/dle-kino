@@ -482,6 +482,12 @@ function ckeck_uncheck_all() {
         <td>{$lang['user_name']}</td>
         <td>{$lang['user_reg']}</td>
         <td>{$lang['user_last']}</td>
+        <td>ФИО</td>
+        <td>Страна</td>
+        <td>Город</td>
+        <td>Индекс</td>
+        <td>Улица</td>
+        <td>Тел</td>
         <td style="width: 40px"><i class="icon-file-alt  tip" data-original-title="{$lang['rss_maxnews']}"></i></td>
         <td style="width: 40px"><i class="icon-comment-alt tip" data-original-title="{$lang['edit_com']}"></i></td>
 		<td style="width: 250px">{$lang['user_acc']}</td>
@@ -500,6 +506,8 @@ HTML;
 	
 	while ( $row = $db->get_row() ) {
 		$i ++;
+
+		$rowXfields = xfieldsdataload($row['xfields']);
 		
 		$last_login = langdate( 'd/m/Y - H:i', $row['lastdate'] );
 		$user_name = "<a class=\"status-info\" href=\"{$config['http_home_url']}index.php?subaction=userinfo&user=" . urlencode( $row['name'] ) . "\" target=\"_blank\">" . $row[name] . "</a>";
@@ -556,6 +564,12 @@ HTML;
 		echo (langdate( "d/m/Y - H:i", $row['reg_date'] ));
 		echo "</td>
         <td align=\"center\">$last_login</td>
+        <td>{$rowXfields['first_name']} {$rowXfields['last_name']}</td>
+        <td>{$rowXfields['country']}</td>
+        <td>{$rowXfields['city']}</td>
+        <td>{$rowXfields['post_code']}</td>
+        <td>{$rowXfields['street']}</td>
+        <td>{$rowXfields['phone']}</td>
         <td align=\"center\">
         {$news_link}</td>
         <td align=\"center\">

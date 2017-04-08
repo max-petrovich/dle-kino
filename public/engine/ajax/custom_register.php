@@ -46,49 +46,49 @@ $request = $_POST;
 
 // Validate request
 $constraintArray = array(
-    'first_name'  => new NotBlank([
+    'first_name'  => new NotBlank(array(
         'message' => 'Не заполнено поле Имя'
-    ]),
-    'last_name'  => new NotBlank([
+    )),
+    'last_name'  => new NotBlank(array(
         'message' => 'Не заполнено поле Фамилия'
-    ]),
+    )),
     'email' => array(
-        new NotBlank([
+        new NotBlank(array(
             'message' => 'Не заполнено поле Email'
-        ]),
-        new Email([
+        )),
+        new Email(array(
             'message' => 'Некорректный email'
-        ]),
-        new UniqueDatabase([
+        )),
+        new UniqueDatabase(array(
             'message' => 'Email \'%value%\' уже занят',
             'db' => $db,
             'tablePrefix' => USERPREFIX
-        ])
+        ))
     ),
     'password' => array(
-        new NotBlank([
+        new NotBlank(array(
             'message' => 'Не заполнено поле Пароль'
-        ]),
-        new Length([
+        )),
+        new Length(array(
             'min' => 6,
             'minMessage' => 'Минимальная длинна пароля состовляет 6 символов'
-        ])
+        ))
     ),
-    'country' => new NotBlank([
+    'country' => new NotBlank(array(
         'message' => 'Не заполнено поле Страна'
-    ]),
-    'city' => new NotBlank([
+    )),
+    'city' => new NotBlank(array(
         'message' => 'Не заполнено поле Город'
-    ]),
-    'post_code' => new NotBlank([
+    )),
+    'post_code' => new NotBlank(array(
         'message' => 'Не заполнено поле Индекс'
-    ]),
-    'street' => new NotBlank([
+    )),
+    'street' => new NotBlank(array(
         'message' => 'Не заполнено поле Улица'
-    ]),
-    'phone' => new NotBlank([
+    )),
+    'phone' => new NotBlank(array(
         'message' => 'Не заполнено поле Телефон'
-    ])
+    ))
 );
 
 if (!empty($_POST['sms_code'])) {
@@ -130,8 +130,13 @@ if (0 !== count($violations)) {
         $_IP = get_ip();
 
         // generate user name
-        $usersCount = $db->super_query("SELECT COUNT(user_id) as count FROM ". USERPREFIX. "_users ");
-        $userName = 'user' . ((int)$usersCount['count'] + 1);
+        $login = totranslit($request['first_name'] . '-' . $request['last_name'], true, true);
+        $usersCount = $db->super_query("SELECT COUNT(user_id) as count FROM ". USERPREFIX. "_users WHERE name = '".$db->safesql($login)."'");
+        if ($usersCount['count'] == 0) {
+            $userName = $login;
+        } else {
+            $userName = $login . ((int)$usersCount['count'] + 1);
+        }
 
         // Make xfields
         $_POST['xfield'] = $request;
@@ -175,21 +180,20 @@ if (0 !== count($violations)) {
     } else {
         // SEND SMS
         $smsService = new Maxic\Service\SmsService(array(
-            'sender_id' => 'famereach',
-            'login'     => 'famereach',
-            'password'  => '3uEPBbmC'
+            'sender_id' => 'FelixKino',
+            'api_key'   => 'live_TW8EZY2FbdljaZh7ikQT'
         ));
 
-        $smsMessage = 'Your verification code is ' . SMS_CODE;
+        $smsMessage = 'Ihr FelixKino-Code lautet ' . SMS_CODE;
         $smsResponse = $smsService->send($request['phone'], $smsMessage);
 
-        if ((int)$smsResponse > 0) {
+        if ((int)$smsResponse['error'] == 0) {
             $response['message'] = 'SMS sended';
             $response['code'] = 200;
         } else {
             $response['code'] = 400;
-            $response['error'] = array(
-                'Не удалось отправить SMS: ' . $smsResponse
+            $response['errors'] = array(
+                'Не удалось отправить SMS: ' . $smsResponse['error'] . '. Text: ' . $smsResponse['errorDescription']
             );
         }
     }

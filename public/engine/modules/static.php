@@ -23,6 +23,12 @@ $name = @$db->safesql( trim( totranslit( $_GET['page'], true, false ) ) );
 if(!isset($static_result['id']) OR !$static_result['id'] ) $static_result = $db->super_query( "SELECT * FROM " . PREFIX . "_static WHERE name='{$name}'" ); else $static_result['id'] = intval($static_result['id']);
 
 if( $static_result['id'] ) {
+
+    if (!$is_logged && $name === 'premium') {
+        $_SESSION['last_url'] = $config['http_home_url'] . 'premium.html';
+        header("Location: " . $config['http_home_url'] . 'login.html');
+        die();
+    }
 	
 	if ($static_result['allow_count']) $db->query( "UPDATE " . PREFIX . "_static SET views=views+1 WHERE id='{$static_result['id']}'" );
 	
@@ -169,7 +175,7 @@ if( $static_result['id'] ) {
 
 			$news_date = $static_result['date'];	
 			$tpl->copy_template = preg_replace_callback ( "#\{date=(.+?)\}#i", "formdate", $tpl->copy_template );
-			
+
 
 			$tpl->set( '{description}', $static_descr );
 			$tpl->set( '{static}', $template );
@@ -198,6 +204,49 @@ if( $static_result['id'] ) {
 			}
 			
 			$tpl->compile( 'content' );
+
+
+            /**
+             * Profile fields
+             */
+            $tpl->result['content'] = preg_replace( "#{reg-date}#i", langdate( "d.m.Y", $member_id['reg_date'] ), $tpl->result['content'] );
+            $tpl->result['content'] = preg_replace( "#{logged-ip}#i", $member_id['logged_ip'], $tpl->result['content'] );
+            /**
+             * Profile xfields
+             */
+            $xfieldsdata = xfieldsdataload( $member_id['xfields'] );
+
+            foreach ( $xfields as $value ) {
+
+                $preg_safe_name = preg_quote( $value[0], "'" );
+
+                if( $value[5] != 1 OR ($is_logged AND $member_id['user_group'] == 1) OR ($is_logged AND $member_id['user_id'] == $row['user_id']) ) {
+
+                    if( empty( $xfieldsdata[$value[0]] ) ) {
+
+                        $tpl->result['content'] = preg_replace( "'\\[xfgiven_{$preg_safe_name}\\](.*?)\\[/xfgiven_{$preg_safe_name}\\]'is", "", $tpl->result['content'] );
+                        $tpl->result['content'] = str_replace( "[xfnotgiven_{$value[0]}]", "", $tpl->result['content'] );
+                        $tpl->result['content'] = str_replace( "[/xfnotgiven_{$value[0]}]", "", $tpl->result['content'] );
+
+                    } else {
+
+                        $tpl->result['content'] = preg_replace( "'\\[xfnotgiven_{$preg_safe_name}\\](.*?)\\[/xfnotgiven_{$preg_safe_name}\\]'is", "", $tpl->result['content'] );
+                        $tpl->result['content'] = str_replace( "[xfgiven_{$value[0]}]", "", $tpl->result['content'] );
+                        $tpl->result['content'] = str_replace( "[/xfgiven_{$value[0]}]", "", $tpl->result['content'] );
+
+                    }
+
+                    $tpl->result['content'] = preg_replace( "'\\[xfvalue_{$preg_safe_name}\\]'i", stripslashes( $xfieldsdata[$value[0]] ), $tpl->result['content'] );
+
+                } else {
+
+                    $tpl->result['content'] = preg_replace( "'\\[xfgiven_{$preg_safe_name}\\](.*?)\\[/xfgiven_{$preg_safe_name}\\]'is", "", $tpl->result['content'] );
+                    $tpl->result['content'] = preg_replace( "'\\[xfvalue_{$preg_safe_name}\\]'i", "", $tpl->result['content'] );
+                    $tpl->result['content'] = preg_replace( "'\\[xfnotgiven_{$preg_safe_name}\\](.*?)\\[/xfnotgiven_{$preg_safe_name}\\]'is", "", $tpl->result['content'] );
+
+                }
+
+            }
 
 			$tpl->clear();
 		

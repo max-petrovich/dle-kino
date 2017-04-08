@@ -8,7 +8,7 @@
 		<div class="login-form">
 			<form method="post">
 				<div class="login-input">
-					<input type="text" name="login_name" id="login_name" placeholder="Benutzername"/>
+					<input type="text" name="login_name" id="login_name" placeholder="E-Mail-Adresse"/>
 				</div>
 				<div class="login-input">
 					<input type="password" name="login_password" id="login_password" placeholder="Passwort" />

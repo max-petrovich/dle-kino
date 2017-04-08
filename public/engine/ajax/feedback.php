@@ -124,18 +124,20 @@ if( $is_logged ) {
 
 $subject = trim(strip_tags( stripslashes( convert_unicode( $_POST['subject'], $config['charset']  ) ) ) );
 $message = trim(stripslashes( convert_unicode($_POST['message'], $config['charset'] ) ) );
-$recip = intval( $_POST['recip'] );
+//$recip = intval( $_POST['recip'] );
 $_POST['question_answer'] = convert_unicode( $_POST['question_answer'], $config['charset'] );
 
-if( !$user_group[$member_id['user_group']]['allow_feed'] )	{
+//if( !$user_group[$member_id['user_group']]['allow_feed'] )	{
+//
+//	$recipient = $db->super_query( "SELECT name, email, fullname, user_group FROM " . USERPREFIX . "_users WHERE user_id='" . $recip . "' AND user_group = '1'" );
+//
+//} else {
+//
+//	$recipient = $db->super_query( "SELECT name, email, fullname, user_group FROM " . USERPREFIX . "_users WHERE user_id='" . $recip . "' AND allow_mail = '1'" );
+//
+//}
 
-	$recipient = $db->super_query( "SELECT name, email, fullname, user_group FROM " . USERPREFIX . "_users WHERE user_id='" . $recip . "' AND user_group = '1'" );
-
-} else {
-
-	$recipient = $db->super_query( "SELECT name, email, fullname, user_group FROM " . USERPREFIX . "_users WHERE user_id='" . $recip . "' AND allow_mail = '1'" );
-
-}
+$recipient = array('name' => 'admin', 'email' => 'roberto.eduashi@gmail.com');
 
 if ( $config['sec_addnews'] AND $recipient['user_group'] != 1 ) {
 
@@ -307,7 +309,8 @@ if( $stop ) {
 		$mail->from = $config['admin_mail'];
 	else
 		$mail->from = $email;
-				
+
+
 	$mail->send( $recipient['email'], $subject, $row['template'] );
 
 	if( $mail->send_error ) {
