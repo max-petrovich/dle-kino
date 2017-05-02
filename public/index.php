@@ -346,6 +346,10 @@ $tpl->set ( '{content}', "<div id='dle-content'>" . $tpl->result['content'] . "<
 
 $tpl->compile ( 'main' );
 
+/* Speical tags */
+require ROOT_DIR . '/vendor/autoload.php';
+require ENGINE_DIR . '/modules/special_tags.php';
+
 if ($config['allow_links']) $tpl->result['main'] = replace_links ( $tpl->result['main'], $replace_links['all'] );
 
 $tpl->result['main'] = str_ireplace( '{THEME}', $config['http_home_url'] . 'templates/' . $config['skin'], $tpl->result['main'] );

@@ -209,6 +209,7 @@ if( $static_result['id'] ) {
             /**
              * Profile fields
              */
+            $tpl->result['content'] = preg_replace( "#{userid}#i", $member_id['user_id'], $tpl->result['content'] );
             $tpl->result['content'] = preg_replace( "#{reg-date}#i", langdate( "d.m.Y", $member_id['reg_date'] ), $tpl->result['content'] );
             $tpl->result['content'] = preg_replace( "#{logged-ip}#i", $member_id['logged_ip'], $tpl->result['content'] );
             /**

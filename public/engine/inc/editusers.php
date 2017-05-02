@@ -354,6 +354,16 @@ HTML;
 		</div>		
 	</div>
 	<div class="row box-section">
+        <div class="col-md-5">
+            <div class="form-group">
+                <label class="control-label col-lg-3">Экспорт в CSV</label>
+                <div class="col-lg-9">
+                    <input class="icheck" type="checkbox" name="export_csv" value="1">
+                </div>
+            </div>
+	    </div>	   
+    </div>
+	<div class="row box-section">
 		<input type="submit" class="btn btn-blue" value="{$lang['b_find']}">&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="button" class="btn btn-red" value="{$lang['user_breset']}" onclick="javascript:clearform(document.searchform); return false;">&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="reset" class="btn btn-gray" value="{$lang['user_brestore']}">
@@ -701,7 +711,9 @@ HTML;
 </div>
 </form>
 HTML;
-	
+
+	include_once ENGINE_DIR . '/inc/exportusers.php';
+
 	echofooter();
 } 
 // ********************************************************************************
