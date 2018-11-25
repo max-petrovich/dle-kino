@@ -120,7 +120,7 @@ if (0 !== count($violations)) {
         // REGISTER USER
 
         foreach ($request as $key=>$value) {
-            $request[$key] = $db->safesql($value);
+            $request[$key] = ucfirst($db->safesql($value));
         }
 
         $md5password = md5( $request['password'] );
@@ -153,7 +153,7 @@ if (0 !== count($violations)) {
                 if( ! $xfielddatavalue ) {
                     continue;
                 }
-                $xfielddatavalue = $db->safesql( $xfielddatavalue );
+                $xfielddatavalue = ucfirst($db->safesql( $xfielddatavalue ));
                 $xfielddataname = $db->safesql( str_replace( $not_allow_symbol, '', $xfielddataname) );
                 $xfielddataname = str_replace( "|", "&#124;", $xfielddataname );
                 $xfielddatavalue = str_replace( "|", "&#124;", $xfielddatavalue );
